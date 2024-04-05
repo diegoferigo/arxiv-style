@@ -93,6 +93,27 @@
 \sloppy
 
 
+
+\newcommand{\headeright}{A Preprint}
+\newcommand{\undertitle}{A Preprint}
+\newcommand{\shorttitle}{\@title}
+
+\usepackage{fancyhdr}
+\fancyhf{}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyheadoffset{0pt}
+\rhead{\scshape \footnotesize \headeright}
+\chead{\shorttitle}
+\cfoot{\thepage}
+
+
+%Handling Keywords
+\def\keywordname{{\bfseries \emph{Keywords}}}%
+\def\keywords#1{\par\addvspace\medskipamount{\rightskip=0pt plus1cm
+\def\and{\ifhmode\unskip\nobreak\fi\ $\cdot$
+}\noindent\keywordname\enspace\ignorespaces#1\par}}
+
 % font sizes with reduced leading
 \renewcommand{\normalsize}{%
   \@setfontsize\normalsize\@xpt\@xipt
@@ -268,8 +289,9 @@
     \vskip 0.1in
     \@toptitlebar
     \centering
-    {\LARGE\bf \@title\par}
+    {\LARGE\sc \@title\par}
     \@bottomtitlebar
+    \textsc{\undertitle}\\
     \if@submission
       \begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}
         Anonymous Author(s) \\
@@ -288,7 +310,7 @@
       }
       \begin{tabular}[t]{c}\bf\rule{\z@}{24\p@}\@author\end{tabular}%
     \fi
-    \vskip 0.3in \@minus 0.1in
+    \vskip 0.3in \@minus 0.1in \center{\@date} \vskip 0.2in
   }
 }
 
@@ -307,7 +329,7 @@
 {%
   \vskip 0.075in%
   \centerline%
-  {\large\bf Abstract}%
+  {\large\bf\scshape Abstract}%
   \vspace{0.5ex}%
   \begin{quote}%
 }
@@ -320,18 +342,18 @@
 % handle tweaks for camera-ready copy vs. submission copy
 \if@preprint
   \newcommand{\@noticestring}{%
-    Preprint. Under review.%
+%     Preprint. Under review.%
   }
 \else
   \if@neuripsfinal
     \newcommand{\@noticestring}{%
-      \@neuripsordinal\/ Conference on Neural Information Processing Systems
-      (NeurIPS \@neuripsyear).%, \@neuripslocation.%
+%       \@neuripsordinal\/ Conference on Neural Information Processing Systems
+%       (NeurIPS \@neuripsyear).%, \@neuripslocation.%
     }
   \else
     \newcommand{\@noticestring}{%
-      Submitted to \@neuripsordinal\/ Conference on Neural Information
-      Processing Systems (NeurIPS \@neuripsyear). Do not distribute.%
+%       Submitted to \@neuripsordinal\/ Conference on Neural Information
+%       Processing Systems (NeurIPS \@neuripsyear). Do not distribute.%
     }
 
     % hide the acknowledgements
